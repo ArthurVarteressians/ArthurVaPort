@@ -16,6 +16,27 @@ function App() {
   const [menuOpened, setMenuOpened] = useState(false);
   const [started, setStarted] = useState(false);
 
+  useEffect(() => {
+    // Load the Google Analytics script
+    const script = document.createElement('script');
+    script.src = `https://www.googletagmanager.com/gtag/js?id=G-58MH61H232`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    // Initialize Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-58MH61H232');
+
+    // Track page view on component mount
+    gtag('config', 'G-58MH61H232', {
+      page_path: window.location.pathname,
+    });
+  }, []);
+
   return (
     <>
       <LoadingScreen started={started} setStarted={setStarted} />

@@ -96,23 +96,23 @@ const AboutSection = (props) => {
 
 const skills = [
   {
-    title: "Front-End",
+    title: "Front-End Development",
     level: 80,
   },
   {
-    title: "Backed and API",
+    title: "Back-End Architecture & API",
     level: 60,
   },
   {
-    title: "Cloud & VM",
+    title: "Cloud Infrastructure & Solutions",
     level: 50,
   },
   {
-    title: "AWS",
+    title: "DevOps & Deployment",
     level: 80,
   },
   {
-    title: "3D Modeling",
+    title: "Database Design & Management",
     level: 40,
   },
 ];
@@ -241,16 +241,16 @@ const ProjectsSection = () => {
 
   return (
     <Section>
-      <div className="flex w-full h-full gap-8 items-center justify-center">
+      <div className="flex w-full h-full gap-10 items-center mt-80 justify-center">
         <button
-          className="hover:text-indigo-600 transition-colors"
+          className="hover:text-indigo-600 text-xl transition-colors"
           onClick={previousProject}
         >
           ← Previous
         </button>
-        <h2 className="text-5xl font-bold">Projects</h2>
+        <h2 className="text-6xl font-bold">Projects</h2>
         <button
-          className="hover:text-indigo-600 transition-colors"
+          className="hover:text-indigo-600 text-xl transition-colors"
           onClick={nextProject}
         >
           Next →

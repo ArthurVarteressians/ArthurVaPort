@@ -53,9 +53,13 @@ const ContactForm = () => {
         name="simple-contact-form"
         acceptCharset="utf-8"
         onSubmit={handleSubmit}
-        className="max-w-md bg-white p-8 rounded-md shadow-md"
-        style={{ width:"40%" }}
-
+        className="max-w-md p-8 rounded-md shadow-md"
+        style={{
+          width: "80%",
+          backgroundColor: "rgba(67, 116, 910, 0.1)",
+          borderRadius: "20px",
+          border: "1px solid rgba(0, 0, 0, 0.5)",
+        }}
       >
         <div className="mb-4">
           <label
@@ -73,7 +77,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="mt-1 p-2 w-full border rounded-md"
-            style={{fontSize: '0.7rem' }} 
+            style={{ fontSize: "0.7rem" }}
           />
         </div>
         <div className="mb-4">
@@ -92,7 +96,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="mt-1 p-2 w-full border rounded-md"
-            style={{ fontSize: '0.7rem' }} 
+            style={{ fontSize: "0.7rem" }}
           />
         </div>
         <div className="mb-6">
@@ -111,8 +115,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="mt-1 p-2 w-full border rounded-md"
-            style={{ fontSize: '0.7rem' }} 
-
+            style={{ fontSize: "0.7rem" }}
           ></textarea>
         </div>
         <input

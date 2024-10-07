@@ -13,7 +13,7 @@ import * as THREE from "three";
 export function Office(props) {
   const { section } = props;
   const { nodes, materials } = useGLTF("models/scene.gltf");
-  const texture = useTexture("textures/baked.webp");
+  const texture = useTexture("textures/baked2.webp");
   const textureVSCode = useVideoTexture("textures/vscode.mp4");
 
   texture.flipY = false;
@@ -35,12 +35,8 @@ export function Office(props) {
   const glassTextureOpacity = useMotionValue(0);
 
   useEffect(() => {
-    animate(textureOpacity, section === 0 ? 1 : 0, {
-      duration: 0.8,
-    });
-    animate(glassTextureOpacity, section === 0 ? 0.42 : 0, {
-      duration: 0.8,
-    });
+    animate(textureOpacity, section === 0 ? 1 : 0);
+    animate(glassTextureOpacity, section === 0 ? 0.42 : 0);
   }, [section]);
 
   useFrame(() => {
@@ -50,15 +46,23 @@ export function Office(props) {
 
   return (
     <group {...props} dispose={null}>
+      <mesh
+        name="Screen"
+        geometry={nodes.Screen.geometry}
+        position={[0.45, 0.94, -1.3067]}
+        rotation={[Math.PI, -1.1, Math.PI]}
+      >
+        <meshBasicMaterial map={textureVSCode} toneMapped={false} />
+      </mesh>
       <group name="Scene">
         <group
           name="CharacterSpot"
-          position={[0.066, 0.243, -0.568]}
-          rotation={[-Math.PI, 0.419, -Math.PI]}
+          position={[0.066, 0.243, -0.158]}
+          rotation={[-Math.PI, 0.367, -Math.PI]}
         />
         <group
           name="Desk"
-          position={[-0.074, 0, -1.521]}
+          position={[-0.074, 0, -1]}
           rotation={[0, -Math.PI / 2, 0]}
         >
           <mesh
@@ -87,7 +91,7 @@ export function Office(props) {
             material={textureMaterial}
           />
         </group>
-        <group name="SM_ShelfSM_Shelf1" position={[-0.868, 1.694, -2.038]}>
+        <group name="SM_ShelfSM_Shelf1" position={[-0.868, 1.694, -1.35]}>
           <mesh
             name="SM_ShelfSM_Shelf1_1"
             geometry={nodes.SM_ShelfSM_Shelf1_1.geometry}
@@ -99,7 +103,7 @@ export function Office(props) {
             material={textureMaterial}
           />
         </group>
-        <group name="LavaLamp" position={[-1.302, 2.071, -1.986]}>
+        <group name="LavaLamp" position={[-1.302, 2.071, -1.346]}>
           <mesh
             name="Node-Mesh001"
             geometry={nodes["Node-Mesh001"].geometry}
@@ -116,17 +120,16 @@ export function Office(props) {
             material={textureMaterial}
           />
         </group>
-
         <mesh
           name="WawaRug"
           geometry={nodes.WawaRug.geometry}
           material={textureMaterial}
           position={[-0.281, 0.009, 0.765]}
+          scale={0.7}
         />
-
         <group
           name="salameche"
-          position={[-0.61, 2.044, -1.958]}
+          position={[-0.61, 2.044, -1.338]}
           rotation={[-Math.PI, 0.728, -Math.PI]}
         >
           <mesh
@@ -162,7 +165,7 @@ export function Office(props) {
         </group>
         <group
           name="keyboard"
-          position={[0.215, 0.981, -1.215]}
+          position={[0.215, 0.981, -1]}
           rotation={[0, -0.224, 0]}
           scale={0.63}
         >
@@ -189,7 +192,7 @@ export function Office(props) {
         </group>
         <group
           name="iMac"
-          position={[0.454, 0.939, -1.723]}
+          position={[0.454, 0.939, -1.303]}
           rotation={[Math.PI, -1.099, Math.PI]}
         >
           <mesh
@@ -212,29 +215,13 @@ export function Office(props) {
           name="Comp_Mouse"
           geometry={nodes.Comp_Mouse.geometry}
           material={textureMaterial}
-          position={[-0.008, 0, 0.076]}
+          position={[-0.008, 0, 0.34]}
         />
-        <group name="plant" position={[-0.78, 1.071, -1.61]}>
-          <mesh
-            name="mesh24448074"
-            geometry={nodes.mesh24448074.geometry}
-            material={textureMaterial}
-          />
-          <mesh
-            name="mesh24448074_1"
-            geometry={nodes.mesh24448074_1.geometry}
-            material={textureMaterial}
-          />
-          <mesh
-            name="mesh24448074_2"
-            geometry={nodes.mesh24448074_2.geometry}
-            material={textureMaterial}
-          />
-        </group>
         <group
           name="Houseplant_7"
-          position={[-2.019, -0.042, -1.526]}
+          position={[-1.439, -0.022, -1.026]}
           rotation={[-Math.PI / 2, 0, 0]}
+          scale={0.8}
         >
           <mesh
             name="Houseplant_7_1"
@@ -254,7 +241,7 @@ export function Office(props) {
         </group>
         <group
           name="Chair"
-          position={[0.089, 0, -0.664]}
+          position={[0.089, 0, -0.25]}
           rotation={[0, -0.35, 0]}
         >
           <mesh
@@ -268,17 +255,14 @@ export function Office(props) {
             material={textureMaterial}
           />
         </group>
-
         <mesh
           name="Screen"
           geometry={nodes.Screen.geometry}
-          position={[0.45, 0.939, -1.723]}
+          material={textureMaterial}
+          position={[0.454, 0.939, -1.305]}
           rotation={[Math.PI, -1.099, Math.PI]}
-        >
-          <meshBasicMaterial map={textureVSCode} toneMapped={false} />
-        </mesh>
-
-        <group name="Plane">
+        />
+        <group name="Plane" scale={[0.7, 0.76, 0.7]}>
           <mesh
             name="Plane001"
             geometry={nodes.Plane001.geometry}
@@ -287,7 +271,7 @@ export function Office(props) {
           <mesh
             name="Plane001_1"
             geometry={nodes.Plane001_1.geometry}
-            material={materials.Glass}
+            material={textureGlassMaterial}
           />
           <mesh
             name="Plane001_2"
@@ -306,4 +290,3 @@ export function Office(props) {
 }
 
 useGLTF.preload("models/scene.gltf");
-useTexture.preload("textures/baked.webp");

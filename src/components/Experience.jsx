@@ -24,11 +24,9 @@ export const Experience = (props) => {
   // Adjust the responsive ratio based on the viewport and apply a smaller scale factor
   const responsiveRatio = viewport.width / 12;
   const officeScaleRatio = Math.max(
-    isMobile ? 0.4 : 0.6,    // Apply a smaller base scale for mobile and web
+    isMobile ? 0.4 : 0.6, // Apply a smaller base scale for mobile and web
     Math.min(0.8 * responsiveRatio, 0.9)
   );
-
-
 
   const [section, setSection] = useState(0);
 
@@ -76,14 +74,31 @@ export const Experience = (props) => {
         characterGroup.current.position
       );
     }
-    // console.log([position.x, position.y, position.z]);
+  });
 
-    // const quaternion = new THREE.Quaternion();
-    // characterContainerAboutRef.current.getWorldQuaternion(quaternion);
-    // const euler = new THREE.Euler();
-    // euler.setFromQuaternion(quaternion, "XYZ");
+  // Refs for the two shapes
+  const rotateOrangeMeshRef = useRef();
+  const rotateGreenMeshRef = useRef();
 
-    // console.log([euler.x, euler.y, euler.z]);
+  // Speed factors (similar to 'speed' in MeshWobbleMaterial)
+  const orangeRotationSpeedFactor = 0.5; // Adjust this factor for slower or faster rotation
+  const greenRotationSpeedFactor = 0.8; // Different speed factor for the green mesh
+
+  // Animate the rotation using useFrame
+  useFrame(() => {
+    // Orange mesh rotation
+    if (rotateOrangeMeshRef.current) {
+      rotateOrangeMeshRef.current.rotation.x +=
+        0.01 * orangeRotationSpeedFactor;
+      rotateOrangeMeshRef.current.rotation.y +=
+        0.02 * orangeRotationSpeedFactor;
+    }
+
+    // Green mesh rotation
+    if (rotateGreenMeshRef.current) {
+      rotateGreenMeshRef.current.rotation.x -= 0.01 * greenRotationSpeedFactor;
+      rotateGreenMeshRef.current.rotation.y += 0.02 * greenRotationSpeedFactor;
+    }
   });
 
   return (
@@ -115,19 +130,19 @@ export const Experience = (props) => {
             scaleZ: isMobile ? 1.2 : 1,
           },
           2: {
-            x: isMobile ? -1.4 : -2,
+            x: isMobile ? -2.02 : -2.2,
             y: -viewport.height * 2 + 0.5,
             z: 0,
             rotateX: 0,
             rotateY: Math.PI / 2,
             rotateZ: 0,
-            scaleX: 1,
-            scaleY: 1,
-            scaleZ: 1,
+            scaleX: 1.2,
+            scaleY: 1.2,
+            scaleZ: 1.2,
           },
           3: {
             y: -viewport.height * 3 + 1,
-            x: 0.24,
+            x: 0.3,
             z: 8.5,
             rotateX: 0,
             rotateY: -Math.PI / 4,
@@ -138,9 +153,10 @@ export const Experience = (props) => {
           },
         }}
       >
-        <Avatar animation={characterAnimation} 
-        // wireframe={section === 1}
-         />
+        <Avatar
+          animation={characterAnimation}
+          // wireframe={section === 1}
+        />
       </motion.group>
       <ambientLight intensity={1} />
       <motion.group
@@ -162,7 +178,7 @@ export const Experience = (props) => {
         <group
           ref={characterContainerAboutRef}
           name="CharacterSpot"
-          position={[0.07, 0.16, -0.57]}
+          position={[0.07, 0.18, -0.19]}
           rotation={[-Math.PI, 0.42, -Math.PI]}
         ></group>
       </motion.group>
@@ -197,26 +213,60 @@ export const Experience = (props) => {
             />
           </mesh>
         </Float>
+
         <Float>
-          <mesh scale={[3, 3, 3]} position={[3, 1, -18]}>
-            <sphereGeometry />
-            <MeshDistortMaterial
-              opacity={0.8}
+          <mesh scale={[2, 2, 2]} position={[2, 4, -20]}>
+            <torusKnotGeometry args={[1, 0.4, 100, 16]} />
+            <MeshWobbleMaterial
+              opacity={0.7}
               transparent
-              distort={1}
-              speed={5}
-              color="yellow"
+              factor={1}
+              speed={2}
+              color={"purple"}
             />
           </mesh>
         </Float>
+
         <Float>
-          <mesh scale={[1.4, 1.4, 1.4]} position={[-3, -1, -11]}>
+          <mesh
+            ref={rotateOrangeMeshRef}
+            scale={[2, 2, 2]}
+            position={[5, -2, -15]}
+          >
+            <octahedronGeometry args={[1, 2]} />
+            <meshBasicMaterial
+              color={"orange"}
+              wireframe
+              transparent
+              opacity={1}
+            />
+          </mesh>
+        </Float>
+
+        <Float>
+          <mesh
+            ref={rotateGreenMeshRef}
+            scale={[2, 2, 2]}
+            position={[-4, 3, -10]}
+          >
+            <octahedronGeometry args={[1, 0]} />
+            <meshBasicMaterial
+              color={"green"}
+              wireframe
+              transparent
+              opacity={1}
+            />
+          </mesh>
+        </Float>
+
+        <Float>
+          <mesh scale={[2.8, 2.8, 2.8]} position={[-3, -2, -11]}>
             <boxGeometry />
             <MeshWobbleMaterial
               opacity={0.8}
               transparent
               factor={1}
-              speed={5}
+              speed={2}
               color={"blue"}
             />
           </mesh>
