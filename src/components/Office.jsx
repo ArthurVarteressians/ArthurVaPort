@@ -165,8 +165,8 @@ export function Office(props) {
         </group>
         <group
           name="keyboard"
-          position={[0.215, 0.981, -1]}
-          rotation={[0, -0.224, 0]}
+          position={[0.32, 0.981, -0.85]}
+          rotation={[0, -0.2, 0]}
           scale={0.63}
         >
           <mesh
@@ -215,7 +215,7 @@ export function Office(props) {
           name="Comp_Mouse"
           geometry={nodes.Comp_Mouse.geometry}
           material={textureMaterial}
-          position={[-0.008, 0, 0.34]}
+          position={[0.1, 0, 0.45]}
         />
         <group
           name="Houseplant_7"

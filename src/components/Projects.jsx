@@ -122,7 +122,7 @@ export const Projects = () => {
           animate={{
             x: 0 + (index - currentProject) * 4.8,
             y: currentProject === index ? 1 : -0.1,
-            z: currentProject === index ? -2 : -5,
+            z: currentProject === index ? -1 : -5,
             rotateX: currentProject === index ? 0 : -Math.PI / 3,
             rotateZ: currentProject === index ? 0 : -0.1 * Math.PI,
           }}

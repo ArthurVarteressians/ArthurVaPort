@@ -45,11 +45,10 @@ export const Experience = (props) => {
   const characterContainerAboutRef = useRef();
 
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
+
+  // Update the character animation based on the current section
   useEffect(() => {
-    setCharacterAnimation("Falling");
-    setTimeout(() => {
-      setCharacterAnimation(section === 0 ? "Typing" : "Standing");
-    }, 600);
+    setCharacterAnimation(section === 0 ? "Typing" : "Standing");
   }, [section]);
 
   const characterGroup = useRef();
@@ -68,7 +67,6 @@ export const Experience = (props) => {
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
 
-    // const position = new THREE.Vector3();
     if (section === 0) {
       characterContainerAboutRef.current.getWorldPosition(
         characterGroup.current.position
@@ -80,13 +78,12 @@ export const Experience = (props) => {
   const rotateOrangeMeshRef = useRef();
   const rotateGreenMeshRef = useRef();
 
-  // Speed factors (similar to 'speed' in MeshWobbleMaterial)
-  const orangeRotationSpeedFactor = 0.5; // Adjust this factor for slower or faster rotation
-  const greenRotationSpeedFactor = 0.8; // Different speed factor for the green mesh
+  // Speed factors for the mesh rotation
+  const orangeRotationSpeedFactor = 0.5; 
+  const greenRotationSpeedFactor = 0.8; 
 
   // Animate the rotation using useFrame
   useFrame(() => {
-    // Orange mesh rotation
     if (rotateOrangeMeshRef.current) {
       rotateOrangeMeshRef.current.rotation.x +=
         0.01 * orangeRotationSpeedFactor;
@@ -94,7 +91,6 @@ export const Experience = (props) => {
         0.02 * orangeRotationSpeedFactor;
     }
 
-    // Green mesh rotation
     if (rotateGreenMeshRef.current) {
       rotateGreenMeshRef.current.rotation.x -= 0.01 * greenRotationSpeedFactor;
       rotateGreenMeshRef.current.rotation.y += 0.02 * greenRotationSpeedFactor;
@@ -119,7 +115,7 @@ export const Experience = (props) => {
             scaleZ: officeScaleRatio,
           },
           1: {
-            y: -viewport.height + 0.5,
+            y: -viewport.height + 1,
             x: isMobile ? 0.3 : 0,
             z: 7,
             rotateX: 0,
@@ -153,10 +149,7 @@ export const Experience = (props) => {
           },
         }}
       >
-        <Avatar
-          animation={characterAnimation}
-          // wireframe={section === 1}
-        />
+        <Avatar animation={characterAnimation} />
       </motion.group>
       <ambientLight intensity={1} />
       <motion.group

@@ -11,22 +11,17 @@ export function Avatar(props) {
     cursorFollow: false,
     wireframe: false,
   });
+
   const group = useRef();
   const { nodes, materials } = useGLTF("models/Charecter.glb");
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
-  const { animations: standingAnimation } = useFBX(
-    "animations/Standing Idle.fbx"
-  );
-  const { animations: fallingAnimation } = useFBX(
-    "animations/Falling Idle.fbx"
-  );
+  const { animations: standingAnimation } = useFBX("animations/Standing Idle.fbx");
 
   typingAnimation[0].name = "Typing";
   standingAnimation[0].name = "Standing";
-  fallingAnimation[0].name = "Falling";
 
   const { actions } = useAnimations(
-    [typingAnimation[0], standingAnimation[0], fallingAnimation[0]],
+    [typingAnimation[0], standingAnimation[0]],
     group
   );
 
@@ -41,11 +36,18 @@ export function Avatar(props) {
   });
 
   useEffect(() => {
-    actions[animation].reset().fadeIn(0.5).play();
+    if (actions[animation]) {
+      actions[animation].reset().fadeIn(0.5).play();
+    } else {
+      console.error(`Animation '${animation}' not found in actions.`);
+    }
     return () => {
-      actions[animation].reset().fadeOut(0.5);
+      if (actions[animation]) {
+        actions[animation].reset().fadeOut(0.5);
+      }
     };
   }, [animation]);
+  
 
   useEffect(() => {
     Object.values(materials).forEach((material) => {
@@ -131,4 +133,3 @@ export function Avatar(props) {
 useGLTF.preload("models/Charecter.glb");
 useFBX.preload("animations/Typing.fbx");
 useFBX.preload("animations/Standing Idle.fbx");
-useFBX.preload("animations/Falling Idle.fbx");
