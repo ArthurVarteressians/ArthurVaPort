@@ -116,15 +116,6 @@ export function Avatar(props) {
           morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary}
           morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
         />
-        <skinnedMesh
-          frustumCulled={false}
-          name="Wolf3D_Teeth"
-          geometry={nodes.Wolf3D_Teeth.geometry}
-          material={materials.Wolf3D_Teeth}
-          skeleton={nodes.Wolf3D_Teeth.skeleton}
-          morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary}
-          morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
-        />
       </group>
     </group>
   );
