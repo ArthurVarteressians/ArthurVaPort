@@ -48,25 +48,12 @@ export const Experience = (props) => {
 
   // Update the character animation based on the current section
   useEffect(() => {
-    setCharacterAnimation(section === 0 ? "Typing" : "Standing");
+    setCharacterAnimation(section === 0 ? "Typing" : "");
   }, [section]);
 
   const characterGroup = useRef();
 
   useFrame((state) => {
-    let curSection = Math.floor(data.scroll.current * data.pages);
-
-    if (curSection > 3) {
-      curSection = 3;
-    }
-
-    if (curSection !== section) {
-      setSection(curSection);
-    }
-
-    state.camera.position.x = cameraPositionX.get();
-    state.camera.lookAt(cameraLookAtX.get(), 0, 0);
-
     if (section === 0) {
       characterContainerAboutRef.current.getWorldPosition(
         characterGroup.current.position
@@ -79,8 +66,8 @@ export const Experience = (props) => {
   const rotateGreenMeshRef = useRef();
 
   // Speed factors for the mesh rotation
-  const orangeRotationSpeedFactor = 0.5; 
-  const greenRotationSpeedFactor = 0.8; 
+  const orangeRotationSpeedFactor = 0.5;
+  const greenRotationSpeedFactor = 0.8;
 
   // Animate the rotation using useFrame
   useFrame(() => {
@@ -114,39 +101,6 @@ export const Experience = (props) => {
             scaleY: officeScaleRatio,
             scaleZ: officeScaleRatio,
           },
-          1: {
-            y: -viewport.height + 1,
-            x: isMobile ? 0.3 : 0,
-            z: 7,
-            rotateX: 0,
-            rotateY: isMobile ? -Math.PI / 3 : 0,
-            rotateZ: 0,
-            scaleX: isMobile ? 1.2 : 1,
-            scaleY: isMobile ? 1.2 : 1,
-            scaleZ: isMobile ? 1.2 : 1,
-          },
-          2: {
-            x: isMobile ? -2.02 : -2.2,
-            y: -viewport.height * 2 + 0.5,
-            z: 0,
-            rotateX: 0,
-            rotateY: Math.PI / 2,
-            rotateZ: 0,
-            scaleX: 1.2,
-            scaleY: 1.2,
-            scaleZ: 1.2,
-          },
-          3: {
-            y: -viewport.height * 3 + 1,
-            x: 0.3,
-            z: 8.5,
-            rotateX: 0,
-            rotateY: -Math.PI / 4,
-            rotateZ: 0,
-            scaleX: 1,
-            scaleY: 1,
-            scaleZ: 1,
-          },
         }}
       >
         <Avatar animation={characterAnimation} />
@@ -176,7 +130,6 @@ export const Experience = (props) => {
         ></group>
       </motion.group>
 
-      {/* SKILLS */}
       <motion.group
         position={[
           0,
@@ -208,64 +161,23 @@ export const Experience = (props) => {
         </Float>
 
         <Float>
-          <mesh scale={[2, 2, 2]} position={[2, 4, -20]}>
-            <torusKnotGeometry args={[1, 0.4, 100, 16]} />
-            <MeshWobbleMaterial
-              opacity={0.7}
-              transparent
-              factor={1}
-              speed={2}
-              color={"purple"}
-            />
-          </mesh>
-        </Float>
-
-        <Float>
-          <mesh
-            ref={rotateOrangeMeshRef}
-            scale={[2, 2, 2]}
-            position={[5, -2, -15]}
-          >
-            <octahedronGeometry args={[1, 2]} />
-            <meshBasicMaterial
-              color={"orange"}
-              wireframe
-              transparent
-              opacity={1}
-            />
-          </mesh>
-        </Float>
-
-        <Float>
           <mesh
             ref={rotateGreenMeshRef}
             scale={[2, 2, 2]}
-            position={[-4, 3, -10]}
+            position={[-2, 2, -3]}
+            speed={5}
           >
-            <octahedronGeometry args={[1, 0]} />
+            <octahedronGeometry args={[1, 1]} />
             <meshBasicMaterial
-              color={"green"}
+              color={"black"}
+
               wireframe
               transparent
               opacity={1}
-            />
-          </mesh>
-        </Float>
-
-        <Float>
-          <mesh scale={[2.8, 2.8, 2.8]} position={[-3, -2, -11]}>
-            <boxGeometry />
-            <MeshWobbleMaterial
-              opacity={0.8}
-              transparent
-              factor={1}
-              speed={2}
-              color={"blue"}
             />
           </mesh>
         </Float>
       </motion.group>
-      <Projects />
     </>
   );
 };
