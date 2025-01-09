@@ -3,31 +3,28 @@ import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+
 export const Background = () => {
   const material = useRef();
   const color = useRef({
     color: "#a9eaff",
   });
-  const data = useScroll();
+  const data = useScroll(); // Should only be called inside <ScrollControls>
 
   const tl = useRef();
 
   useFrame(() => {
-    tl.current.progress(data.scroll.current);
-    material.current.color = new THREE.Color(color.current.color);
+    if (data?.scroll) {  // Avoid null errors
+      tl.current.progress(data.scroll.current);
+      material.current.color = new THREE.Color(color.current.color);
+    }
   });
 
   useEffect(() => {
     tl.current = gsap.timeline();
-    tl.current.to(color.current, {
-      color: "#fff",
-    });
-    tl.current.to(color.current, {
-      color: "#fff",
-    });
-    tl.current.to(color.current, {
-      color: "#fff",
-    });
+    tl.current.to(color.current, { color: "#f0a", duration: 1 });
+    tl.current.to(color.current, { color: "#a9eaff", duration: 1 });
+    tl.current.to(color.current, { color: "#fff", duration: 1 });
   }, []);
 
   return (

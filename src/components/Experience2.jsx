@@ -1,6 +1,6 @@
 import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { Book } from "./Book";
-export const Experience = () => {
+export const Experience2 = () => {
   return (
     <>
       <Float
@@ -28,3 +28,4 @@ export const Experience = () => {
     </>
   );
 };
+export default Experience2;
