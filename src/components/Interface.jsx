@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { useAtom } from "jotai";
-import ContactForm from "./Form";
 
 const Section = (props) => {
   const { children } = props;
@@ -29,18 +27,15 @@ const Section = (props) => {
   );
 };
 
-export const Interface = (props) => {
-  const { setSection } = props;
+export const Interface = () => {
   return (
     <div className="flex flex-col items-center w-screen">
-      <AboutSection setSection={setSection} />
-      <ContactSection />
+      <AboutSection />
     </div>
   );
 };
 
-const AboutSection = (props) => {
-  const { setSection } = props;
+const AboutSection = () => {
   return (
     <Section>
       <h1 className="text-4xl font-extrabold leading-snug">
@@ -70,7 +65,6 @@ const AboutSection = (props) => {
         take on exciting new projects.
       </motion.p>
       <motion.button
-        onClick={() => setSection(3)}
         className={`bg-[#2795ff] text-white py-4 px-8 
         rounded-lg hover-[#0685ff] font-bold text-lg mt-16`}
         initial={{
@@ -88,14 +82,6 @@ const AboutSection = (props) => {
       >
         Contact me
       </motion.button>
-    </Section>
-  );
-};
-
-const ContactSection = () => {
-  return (
-    <Section>
-      <ContactForm />
     </Section>
   );
 };
