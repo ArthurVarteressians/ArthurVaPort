@@ -12,7 +12,6 @@ import { framerMotionConfig } from "../config";
 import { Avatar } from "./Avatar";
 import { Background } from "./Background";
 import { Office } from "./Office";
-import { Projects } from "./Projects";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
@@ -169,8 +168,7 @@ export const Experience = (props) => {
           >
             <octahedronGeometry args={[1, 1]} />
             <meshBasicMaterial
-              color={"black"}
-
+              color={"#313131"}
               wireframe
               transparent
               opacity={1}

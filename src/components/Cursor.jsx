@@ -68,7 +68,7 @@ export const Cursor = () => {
         ${
           hoverButton
             ? "bg-transparent border-2 border-indigo-100 w-5 h-5"
-            : "bg-indigo-600 w-3 h-3"
+            : "bg-blue-800 w-3 h-3"
         }`}
         ref={cursorOutline}
       ></div>

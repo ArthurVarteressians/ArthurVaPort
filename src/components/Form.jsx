@@ -9,6 +9,8 @@ const ContactForm = () => {
     message: "",
   });
 
+  const isFormValid = formData.name && formData.email && formData.message;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -47,24 +49,23 @@ const ContactForm = () => {
   return (
     <>
       <ToastContainer position="bottom-right" autoClose={5000} />
-
       <form
         id="fs-frm"
         name="simple-contact-form"
         acceptCharset="utf-8"
         onSubmit={handleSubmit}
-        className="max-w-md p-8 rounded-md shadow-md"
+        className="max-w-md p-8 rounded-2xl shadow-md bg-gray-900"
         style={{
-          width: "80%",
-          backgroundColor: "rgba(67, 116, 910, 0.1)",
-          borderRadius: "20px",
-          border: "1px solid rgba(0, 0, 0, 0.5)",
+          width: "90%",
+          margin: "auto",
+          border: "1px solid #444",
         }}
       >
+        <h2 className="text-center text-gray-100 text-2xl font-bold mb-6">Contact Us</h2>
         <div className="mb-4">
           <label
             htmlFor="full-name"
-            className="block text-sm font-semibold text-gray-600"
+            className="block text-gray-300 font-medium text-lg"
           >
             Full Name
           </label>
@@ -72,18 +73,17 @@ const ContactForm = () => {
             type="text"
             name="name"
             id="full-name"
-            placeholder="First and Last"
+            placeholder="Enter your full name"
             value={formData.name}
             onChange={handleChange}
             required
-            className="mt-1 p-2 w-full border rounded-md"
-            style={{ fontSize: "0.7rem" }}
+            className="mt-2 p-3 w-full border border-gray-600 rounded-md focus:ring-2 focus:ring-gray-500 outline-none bg-gray-800 placeholder-gray-400 text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="email-address"
-            className="block text-sm font-semibold text-gray-600"
+            className="block text-gray-300 font-medium text-lg"
           >
             Email Address
           </label>
@@ -91,18 +91,17 @@ const ContactForm = () => {
             type="email"
             name="email"
             id="email-address"
-            placeholder="Your email"
+            placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-1 p-2 w-full border rounded-md"
-            style={{ fontSize: "0.7rem" }}
+            className="mt-2 p-3 w-full border border-gray-600 rounded-md focus:ring-2 focus:ring-gray-500 outline-none bg-gray-800 placeholder-gray-400 text-gray-200"
           />
         </div>
         <div className="mb-6">
           <label
             htmlFor="message"
-            className="block text-sm font-semibold text-gray-600"
+            className="block text-gray-300 font-medium text-lg"
           >
             Message
           </label>
@@ -110,12 +109,11 @@ const ContactForm = () => {
             rows="5"
             name="message"
             id="message"
-            placeholder="Your message"
+            placeholder="Enter your message here"
             value={formData.message}
             onChange={handleChange}
             required
-            className="mt-1 p-2 w-full border rounded-md"
-            style={{ fontSize: "0.7rem" }}
+            className="mt-2 p-3 w-full border border-gray-600 rounded-md focus:ring-2 focus:ring-gray-500 outline-none bg-gray-800 placeholder-gray-400 text-gray-200"
           ></textarea>
         </div>
         <input
@@ -126,7 +124,12 @@ const ContactForm = () => {
         />
         <button
           type="submit"
-          className="bg-indigo-600 text-white py-2 px-4 rounded-full font-bold text-lg"
+          disabled={!isFormValid}
+          className={`w-full py-3 rounded-md font-bold text-lg transition-transform transform shadow-lg ${
+            isFormValid
+              ? "bg-gray-700 text-gray-100 hover:bg-gray-600 hover:text-white hover:scale-105"
+              : "bg-gray-800 text-gray-500 cursor-not-allowed"
+          }`}
         >
           Submit
         </button>
