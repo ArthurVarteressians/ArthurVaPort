@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const pictures = ["image1", "image2", "image3", "image4", "image5", "image6"];
 
-export const pageAtom = atom(0); // Export pageAtom
+export const pageAtom = atom(0);
 
 export const pages = [
   {
