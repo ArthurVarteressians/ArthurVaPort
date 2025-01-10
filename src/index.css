@@ -5,6 +5,9 @@
 #root {
   width: 100vw;
   height: 100vh;
+  background: radial-gradient(#50b8e7, #84cdee 60%);
+  overflow-x:hidden;
+  overscroll-behavior:none;
 }
 
 body {
