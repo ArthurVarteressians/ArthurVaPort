@@ -1,7 +1,24 @@
 import { Float, OrbitControls } from "@react-three/drei";
 import { Book } from "./Book";
+import { useEffect, useState } from "react";
 
 export const Experience2 = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check the screen size on component mount
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile breakpoint (768px and below)
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize); // Listen for window resize
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Clean up listener on unmount
+    };
+  }, []);
+
   return (
     <>
       <Float
@@ -9,21 +26,17 @@ export const Experience2 = () => {
         floatIntensity={1}
         speed={1.5}
         rotationIntensity={1}
-        scale={0.8} // Adjusted scale for smaller size
+        scale={isMobile ? 0.5 : 0.8} // Smaller size on mobile, normal size on larger screens
       >
         <Book />
       </Float>
 
       <OrbitControls enableZoom={false} enablePan={false} /> {/* Disable zoom and pan */}
-
-      {/* Set a solid background color */}
-      <color attach="background" args={["#c7e6ff"]} /> {/* Light color (e.g., soft blue) */}
-
+      <color attach="background" args={["#c7e6ff"]} /> {/* Light color background */}
       <ambientLight intensity={0.3} /> {/* Soft ambient light for overall lighting */}
-      
       <directionalLight
         position={[1, 5, 2]}
-        intensity={0.6} // Reduced intensity for a softer directional light on pages
+        intensity={0.6} // Reduced intensity for softer lighting
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}

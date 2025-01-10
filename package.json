@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@formspree/react": "^2.4.2",
-    "@react-three/drei": "9.75.0",
+    "@react-three/drei": "^9.75.0",
     "@react-three/fiber": "^8.17.12",
     "framer-motion": "^10.12.16",
     "framer-motion-3d": "^10.17.9",
