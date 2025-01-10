@@ -1,35 +1,80 @@
-import React, { useEffect, useState } from "react";
-import App from "./App"; // First 3D Scene (Office)
-import App2 from "./App2"; // Second 3D Scene (Book)
-import "./index.css"; // General styling
+import React, { useState, useEffect, lazy, Suspense } from "react";
+import App from "./App"; // First 3D model
+import { UI } from "./components/UI"; // Book controls for the book scene
 
-function MainComponent() {
-  const [page, setPage] = useState(0); // 0 = First scene, 1 = Second scene
+// Lazy load App2 for the book model
+const App2 = lazy(() => import("./App2"));
 
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    const viewportHeight = window.innerHeight;
-
-    // Switch to second 3D model if scrolled past 100vh
-    if (scrollY >= viewportHeight * 0.9) {
-      setPage(1); // Switch to App2 (Second 3D model)
-    } else {
-      setPage(0); // Stay on App (First 3D model)
-    }
-  };
+const MainApp = () => {
+  const [showSecondModel, setShowSecondModel] = useState(false); // Controls book scene loading
+  const [scrollReached, setScrollReached] = useState(false);
 
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      if (scrollY >= windowHeight * 0.9 && !scrollReached) {
+        setScrollReached(true); // Trigger loading only after scrolling
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollReached]);
 
   return (
-    <div style={{ width: "100vw", height: "200vh", overflowX: "hidden" }}>
-      <div className="scene-container" style={{ height: "100vh" }}>
-        {page === 0 ? <App /> : <App2 />}
+    <div style={{ height: "200vh", width: "100vw", overflow: "hidden" }}>
+      {/* First 3D model */}
+      <div style={{ height: "100vh" }}>
+        <App />
+      </div>
+
+      {/* Second 3D model loading condition */}
+      <div style={{ height: "100vh" }}>
+        {scrollReached ? (
+          <>
+            <UI /> {/* Show UI only when App2 is visible */}
+            <Suspense
+              fallback={
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "100%",
+                    background: "white",
+                  }}
+                >
+                  <p style={{ fontSize: "20px", color: "#444" }}>
+                    Loading the interactive book scene...
+                  </p>
+                </div>
+              }
+            >
+              <App2 />
+            </Suspense>
+          </>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+              background: "white",
+            }}
+          >
+            <p style={{ fontSize: "20px", color: "#666" }}>
+              Scroll down to view the interactive book 📖
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
-}
+};
 
-export default MainComponent;
+export default MainApp;
