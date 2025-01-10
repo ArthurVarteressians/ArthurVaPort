@@ -8,14 +8,14 @@ function App2() {
   return (
     <div className="w-full h-screen bg-black flex flex-col lg:flex-row">
       {/* Left Section: Skills */}
-      <div className="lg:w-[50%] w-full p-8 flex items-center justify-center overflow-y-auto">
-        <div className="w-full max-w-[85%] md:max-w-[80%] lg:max-w-[75%]">
+      <div className="lg:w-[40%] w-full flex items-center justify-center lg:overflow-y-auto overflow-x-auto">
+      <div className="w-full max-w-[85%] md:max-w-[80%] lg:max-w-[75%] ">
           <SkillsComponent />
         </div>
       </div>
 
       {/* Right Section: 3D Book */}
-      <div className="lg:w-[50%] w-full h-full flex justify-center items-center relative">
+      <div className="lg:w-[60%] w-full h-full flex justify-center items-center relative">
         <Canvas
           shadows
           className="max-w-full"
