@@ -10,7 +10,6 @@ import { motion } from "framer-motion-3d";
 import { useEffect, useRef, useState } from "react";
 import { framerMotionConfig } from "../config";
 import { Avatar } from "./Avatar";
-import { Background } from "./Background";
 import { Office } from "./Office";
 
 export const Experience = (props) => {
@@ -85,7 +84,6 @@ export const Experience = (props) => {
 
   return (
     <>
-      <Background />
       <motion.group
         ref={characterGroup}
         rotation={[-3.141592653589793, 1.2053981633974482, 3.141592653589793]}

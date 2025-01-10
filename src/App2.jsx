@@ -1,8 +1,8 @@
-import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import Experience2 from "./components/Experience2"; // Experience for 3D book
-import { UI } from "./components/UI"; // Book controls for navigation
+import Experience2 from "./components/Experience2";
+import { UI } from "./components/UI";
 
 function App2() {
   return (
@@ -16,9 +16,11 @@ function App2() {
           fov: 45,
         }}
       >
-        <Suspense fallback={null}>
-          <Experience2 />
-        </Suspense>
+        <group position-y={0}>
+          <Suspense fallback={<mesh />}>
+            <Experience2 />
+          </Suspense>
+        </group>
       </Canvas>
     </>
   );

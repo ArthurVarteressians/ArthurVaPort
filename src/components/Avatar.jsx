@@ -15,13 +15,11 @@ export function Avatar(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("models/Charecter.glb");
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
-  const { animations: standingAnimation } = useFBX("animations/Standing Idle.fbx");
 
   typingAnimation[0].name = "Typing";
-  standingAnimation[0].name = "Standing";
 
   const { actions } = useAnimations(
-    [typingAnimation[0], standingAnimation[0]],
+    [typingAnimation[0]],
     group
   );
 
@@ -123,4 +121,3 @@ export function Avatar(props) {
 
 useGLTF.preload("models/Charecter.glb");
 useFBX.preload("animations/Typing.fbx");
-useFBX.preload("animations/Standing Idle.fbx");
