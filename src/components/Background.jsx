@@ -7,7 +7,7 @@ import * as THREE from "three";
 export const Background = () => {
   const material = useRef();
   const color = useRef({
-    color: "#a9eaff",
+    color: "#000",
   });
   const data = useScroll(); // Should only be called inside <ScrollControls>
 
@@ -22,9 +22,9 @@ export const Background = () => {
 
   useEffect(() => {
     tl.current = gsap.timeline();
-    tl.current.to(color.current, { color: "#f0a", duration: 1 });
-    tl.current.to(color.current, { color: "#a9eaff", duration: 1 });
-    tl.current.to(color.current, { color: "#fff", duration: 1 });
+    tl.current.to(color.current, { color: "#000", duration: 1 });
+    tl.current.to(color.current, { color: "#000", duration: 1 });
+    tl.current.to(color.current, { color: "#000", duration: 1 });
   }, []);
 
   return (

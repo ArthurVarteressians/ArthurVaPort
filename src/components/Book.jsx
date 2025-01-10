@@ -25,8 +25,8 @@ const insideCurveStrength = 0.18; // Controls the strength of the curve
 const outsideCurveStrength = 0.05; // Controls the strength of the curve
 const turningCurveStrength = 0.09; // Controls the strength of the curve
 
-const PAGE_WIDTH = 1.71;
-const PAGE_HEIGHT = 1.28; // 4:3 aspect ratio
+const PAGE_WIDTH = 1.28;
+const PAGE_HEIGHT = 1.28;
 const PAGE_DEPTH = 0.003;
 const PAGE_SEGMENTS = 30;
 const SEGMENT_WIDTH = PAGE_WIDTH / PAGE_SEGMENTS;
@@ -88,7 +88,7 @@ const pageMaterials = [
 pages.forEach((page) => {
   useTexture.preload(`/textures/${page.front}.webp`);
   useTexture.preload(`/textures/${page.back}.webp`);
-  useTexture.preload(`/textures/Logo.png`);
+  useTexture.preload(`/images/logo.png`);
 });
 
 const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
@@ -96,7 +96,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     `/textures/${front}.webp`,
     `/textures/${back}.webp`,
     ...(number === 0 || number === pages.length - 1
-      ? [`/textures/Logo.png`]
+      ? [`/images/logo.png`]
       : []),
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
