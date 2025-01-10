@@ -24,19 +24,21 @@ export const Experience2 = () => {
       <Float
         rotation-x={-Math.PI / 6}
         floatIntensity={1}
-        speed={1.5}
+        speed={0.8}
         rotationIntensity={1}
         scale={isMobile ? 0.5 : 0.8} // Smaller size on mobile, normal size on larger screens
       >
         <Book />
       </Float>
-
-      <OrbitControls enableZoom={false} enablePan={false} /> {/* Disable zoom and pan */}
-      <color attach="background" args={["#c7e6ff"]} /> {/* Light color background */}
-      <ambientLight intensity={0.3} /> {/* Soft ambient light for overall lighting */}
+      <OrbitControls enableZoom={false} enablePan={false} />{" "}
+      {/* Disable zoom and pan */}
+      <color attach="background" args={["#c7e6ff"]} />{" "}
+      {/* Light color background */}
+      <ambientLight intensity={0.1} />{" "}
+      {/* Soft ambient light for overall lighting */}
       <directionalLight
-        position={[1, 5, 2]}
-        intensity={0.6} // Reduced intensity for softer lighting
+        position={[2, 10, 5]} // Move light further for a softer effect
+        intensity={0.4} // Slightly lower intensity to avoid overexposure
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
