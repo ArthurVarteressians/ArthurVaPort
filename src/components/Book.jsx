@@ -88,7 +88,7 @@ const pageMaterials = [
 pages.forEach((page) => {
   useTexture.preload(`/textures/${page.front}.webp`);
   useTexture.preload(`/textures/${page.back}.webp`);
-  useTexture.preload(`/images/logo.png`);
+  useTexture.preload(`/images/logo.webp`);
 });
 
 const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
@@ -96,7 +96,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     `/textures/${front}.webp`,
     `/textures/${back}.webp`,
     ...(number === 0 || number === pages.length - 1
-      ? [`/images/logo.png`]
+      ? [`/images/logo.webp`]
       : []),
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
