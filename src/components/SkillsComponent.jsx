@@ -104,32 +104,33 @@ function SkillsComponent() {
         🔥 My Tech Stack
       </h2>
       {/* Horizontal scroll for mobile */}
-      <div className="flex gap-5 lg:grid lg:grid-cols-4 overflow-x-auto snap-x snap-mandatory pe-2">
-        {categories.map((category, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+  {categories.map((category, index) => (
+    <div
+      key={index}
+      className="bg-gray-500 p-1 rounded-lg shadow-lg flex-shrink-0 flex flex-col items-center border border-gray-700"
+    >
+      <h6 className="text-[14px] font-extralight mb-2 text-white text-center">
+        {category.title}
+      </h6>
+      {/* 2x2 Grid for Icons on Mobile, 1 Column for Web */}
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+        {category.skills.map((skill, i) => (
           <div
-            key={index}
-            className="bg-gray-500 p-1 rounded-lg shadow-lg flex-shrink-0 w-[70%] flex flex-col items-center border border-gray-700"
+            key={i}
+            className="group relative flex justify-center items-center bg-gray-200 hover:bg-gray-700 transition-all duration-200 p-2 rounded-lg"
           >
-            <h6 className="text-[14px] font-extralight  mb-2 text-white text-center">
-              {category.title}
-            </h6>
-            <div className="flex flex-col gap-2 w-[70%] h-[80%]">
-              {category.skills.map((skill, i) => (
-                <div
-                  key={i}
-                  className="group relative flex justify-center items-center bg-gray-200 hover:bg-gray-700 transition-all duration-200 p-2 rounded-lg"
-                >
-                  <div className="text-2xl">{skill.icon}</div>
-                  {/* Tech name on hover */}
-                  <span className="absolute opacity-0 group-hover:opacity-100 text-white font-extralight text-base bg-black px-0.5 rounded-md transition-opacity duration-200">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <div className="text-2xl">{skill.icon}</div>
+            <span className="absolute opacity-0 group-hover:opacity-100 text-white font-extralight text-base bg-black px-0.5 rounded-md transition-opacity duration-200">
+              {skill.name}
+            </span>
           </div>
         ))}
       </div>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 }

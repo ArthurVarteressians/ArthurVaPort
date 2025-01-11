@@ -6,11 +6,13 @@ import { UI } from "./components/UI"; // Book navigation UI
 
 function App2() {
   return (
-    <div className="w-full h-screen bg-black flex flex-col lg:flex-row">
-      <SkillsComponent />
-
+    <div className="w-full h-screen flex flex-col lg:flex-row">
+      {/* Left Section: Skills */}
+      <div className="w-full lg:w-[40%] flex justify-center align-middle p-2">
+        <SkillsComponent />
+      </div>
       {/* Right Section: 3D Book */}
-      <div className="sm:w-[60%] w-full h-full flex justify-center items-center relative">
+      <div className="w-full lg:w-[60%] flex justify-center items-center relative h-[50%] lg:h-full">
         <Canvas
           shadows
           className="max-w-full"
