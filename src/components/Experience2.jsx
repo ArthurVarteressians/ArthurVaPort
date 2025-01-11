@@ -26,7 +26,7 @@ export const Experience2 = () => {
         floatIntensity={1}
         speed={0.8}
         rotationIntensity={1}
-        scale={isMobile ? 0.5 : 0.8} // Smaller size on mobile, normal size on larger screens
+        scale={isMobile ? 1.5 : 0.8} // Smaller size on mobile, normal size on larger screens
       >
         <Book />
       </Float>

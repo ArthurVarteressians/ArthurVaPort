@@ -34,11 +34,11 @@ export const UI = () => {
 
   return (
     <main className="pointer-events-auto select-none flex justify-center">
-      <div className="overflow-auto flex items-center gap-4 max-w-full p-4">
+      <div className="overflow-auto flex items-center gap-4 max-w-full p-2">
         {[...pages].map((_, index) => (
           <button
             key={index}
-            className={`border-transparent hover:border-white transition-all duration-300 px-4 py-2 rounded-full text-sm md:text-lg uppercase shrink-0 border ${
+            className={`border-transparent hover:border-white transition-all duration-300 px-2 py-1 rounded-full text-sm md:text-lg uppercase shrink-0 border ${
               index === page
                 ? "bg-white/90 text-black"
                 : "bg-black/50 text-white"
@@ -49,7 +49,7 @@ export const UI = () => {
           </button>
         ))}
         <button
-          className={`border-transparent hover:border-white transition-all duration-300 px-4 py-2 rounded-full text-sm md:text-lg uppercase shrink-0 border ${
+          className={`border-transparent hover:border-white transition-all duration-300 px-2 py-1 rounded-full text-sm md:text-lg uppercase shrink-0 border ${
             page === pages.length
               ? "bg-white/90 text-black"
               : "bg-black/50 text-white"

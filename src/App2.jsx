@@ -7,7 +7,7 @@ import { UI } from "./components/UI"; // Book navigation UI
 function App2() {
   return (
     <div className="w-full bg-gray-900  h-screen flex flex-col lg:flex-row">
-      <div className="w-full lg:w-[40%] m-auto bg-gray-900 flex justify-center align-middle p-2">
+      <div className="w-full lg:w-[40%] m-auto flex justify-center align-middle p-2">
         <SkillsComponent />
       </div>
       {/* Right Section: 3D Book */}
@@ -27,7 +27,7 @@ function App2() {
 
         {/* Floating Navigation Buttons */}
         <div className="absolute bottom-8 left-0 w-full flex justify-center">
-          <div className="bg-black/80 p-4 rounded-lg">
+          <div className="bg-black/80 p-1 rounded-lg">
             <UI />
           </div>
         </div>
