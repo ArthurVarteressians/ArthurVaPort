@@ -99,7 +99,7 @@ function SkillsComponent() {
   ];
 
   return (
-    <div className="p-2 max-w-full">
+    <div className="p-1 max-w-full">
       <h2 className="text-xl md:text-2xl font-bold text-white text-center mb-4">
         🔥 My Tech Stack
       </h2>
@@ -108,9 +108,9 @@ function SkillsComponent() {
         {categories.map((category, index) => (
           <div
             key={index}
-            className="bg-gray-800 p-2 rounded-lg shadow-lg flex-shrink-0 w-[70%] flex flex-col items-center border border-gray-700"
+            className="bg-gray-500 p-1 rounded-lg shadow-lg flex-shrink-0 w-[70%] flex flex-col items-center border border-gray-700"
           >
-            <h6 className="text-[14px] font-extralight p-2 mb-2 text-white text-center">
+            <h6 className="text-[14px] font-extralight  mb-2 text-white text-center">
               {category.title}
             </h6>
             <div className="flex flex-col gap-2 w-[70%] h-[80%]">
@@ -121,7 +121,7 @@ function SkillsComponent() {
                 >
                   <div className="text-2xl">{skill.icon}</div>
                   {/* Tech name on hover */}
-                  <span className="absolute opacity-0 group-hover:opacity-100 text-white font-extralight text-base bg-black px-2 py-1 rounded-md transition-opacity duration-200">
+                  <span className="absolute opacity-0 group-hover:opacity-100 text-white font-extralight text-base bg-black px-0.5 rounded-md transition-opacity duration-200">
                     {skill.name}
                   </span>
                 </div>
