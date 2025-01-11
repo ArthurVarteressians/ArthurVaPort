@@ -1,0 +1,6 @@
+<!-- Save this as AzureIcon.svg in your project (e.g., src/assets/icons/) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="48px" height="48px">
+  <path fill="#0089D6" d="M63.82 0L0 111.42h42.66L80.36 128l47.27-80.42z" />
+  <path fill="#008AD7" d="M0 111.42h42.66l14.16-24.05H26.43z" />
+  <path fill="#0089D6" d="M80.36 128l47.27-80.42h-33.9z" />
+</svg>
