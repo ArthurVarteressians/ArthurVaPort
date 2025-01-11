@@ -6,9 +6,8 @@ import { UI } from "./components/UI"; // Book navigation UI
 
 function App2() {
   return (
-    <div className="w-full h-screen flex flex-col lg:flex-row">
-      {/* Left Section: Skills */}
-      <div className="w-full lg:w-[40%] flex justify-center align-middle p-2">
+    <div className="w-full bg-gray-900  h-screen flex flex-col lg:flex-row">
+      <div className="w-full lg:w-[40%] m-auto bg-gray-900 flex justify-center align-middle p-2">
         <SkillsComponent />
       </div>
       {/* Right Section: 3D Book */}
