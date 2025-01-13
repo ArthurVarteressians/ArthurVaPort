@@ -3,11 +3,12 @@ import { Suspense } from "react";
 import React from "react";
 import SkillsComponent from "./components/SkillsComponent"; // Skills component
 import { UI } from "./components/UI"; // Book navigation UI
-
+import Form from "./components/Form";
 const Experience2 = React.lazy(() => import("./components/Experience2"));
 
 function App2() {
   return (
+    <div> 
     <div className="w-full bg-gray-900  h-screen flex flex-col lg:flex-row">
       <div className="w-full lg:w-[40%] m-auto flex justify-center align-middle p-2">
         <SkillsComponent />
@@ -34,6 +35,8 @@ function App2() {
           </div>
         </div>
       </div>
+      </div>
+      <Form />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Form from "./components/Form";
 
 const App2 = React.lazy(() => import("./App2"));
 
@@ -42,7 +43,7 @@ function MainApp() {
         <App />
         <div style={{ height: "1px " }}>
           {/* Dummy content to force scroll */}
-          <div className="text-gray-900">Arthur Tech Stack</div>
+          <div className="text-gray-900">Arthur Varteressians</div>
         </div>
         <div id="end-marker" style={{ height: "1px" }}></div>
         {/* Intersection target */}
