@@ -24,6 +24,14 @@ function App() {
       page_path: window.location.pathname,
     });
   }, []);
+  const scrollToForm = () => {
+    const formElement = document.getElementById("contact-form-section");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.error("Form section not found");
+    }
+  };
 
   return (
     <>
@@ -50,7 +58,11 @@ function App() {
                 Welcome to my portfolio! A passionate developer, ready to
                 showcase my work and take on exciting new projects.
               </p>
-              <button className="px-6 py-3 md:px-8 md:py-4 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 text-sm md:text-base lg:text-lg">
+
+              <button
+                onClick={scrollToForm} // Scroll function on button click
+                className="px-6 py-3 md:px-8 md:py-4 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 text-sm md:text-base lg:text-lg"
+              >
                 Contact Me
               </button>
             </div>

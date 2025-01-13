@@ -4,7 +4,7 @@ import { useForm, ValidationError } from "@formspree/react";
 // Import social media images
 import GitHubImage from "../assets/MainGithub.webp"; // Change the path as needed
 import LinkedInImage from "../assets/MainLinkedin.webp";
-import LogoImage from '../assets/logo.webp'; // Your logo image
+import LogoImage from "../assets/logo.webp"; // Your logo image
 
 import "./Form.css"; // Import custom styling
 
@@ -93,11 +93,12 @@ function Form() {
     <div className="app-container">
       <div className="content-wrapper">
         <SocialMediaSection />
-        <ContactForm />
-        <div >
-          <img src={LogoImage} alt="Logo" className="w-[120px] mt-5 h-[60px]" />
+        <div id="contact-form-section">
+          <ContactForm />
         </div>
+        <img src={LogoImage} alt="Logo" className="w-[120px] mt-5 h-[60px]" />
       </div>
+      <div></div>
     </div>
   );
 }

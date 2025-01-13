@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Form from "./components/Form";
 
 const App2 = React.lazy(() => import("./App2"));
 
