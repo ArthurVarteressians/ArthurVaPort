@@ -1,0 +1,5 @@
+<!-- Save this as SequelizeIcon.svg in your project (e.g., src/assets/icons/) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="48px" height="48px">
+  <path d="M64 0l48 27.7v55.4L64 128 16 83.1V27.7L64 0z" fill="#03AFEF"/>
+  <path d="M64 0v128l48-44.9V27.7L64 0zM40.5 35h6v42.2l27-13.2 27 13.2V35h6v54.4l-33-16.3-33 16.3V35z" fill="#fff"/>
+</svg>

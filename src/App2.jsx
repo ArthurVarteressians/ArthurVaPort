@@ -1,8 +1,10 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import Experience2 from "./components/Experience2"; // 3D Book Model
+import React from "react";
 import SkillsComponent from "./components/SkillsComponent"; // Skills component
 import { UI } from "./components/UI"; // Book navigation UI
+
+const Experience2 = React.lazy(() => import("./components/Experience2"));
 
 function App2() {
   return (
