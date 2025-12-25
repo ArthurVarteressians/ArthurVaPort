@@ -30,7 +30,7 @@ function App2() {
 
           {/* Floating Navigation Buttons */}
           <div className="absolute bottom-8 left-0 w-full flex justify-center">
-            <div className="bg-black/80 p-1 rounded-lg">
+            <div className="bg-black/70 p-1 rounded-lg">
               <UI />
             </div>
           </div>

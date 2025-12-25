@@ -6,6 +6,27 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
 export const projects = [
+    {
+    title: "InfinixAI",
+    url: "https://infinixai.eu/",
+    image: "projects/image7.webp",
+    description: "Infinix AI runs entirely on your infrastructure — keeping your data private while unlocking powerful AI capabilities.",
+    stack: ["Vue3", "ML", "TypeScript."],
+  },
+      {
+    title: "InfinixAI",
+    url: "https://infinixai.eu/",
+    image: "projects/image8.webp",
+    description: "Infinix AI runs entirely on your infrastructure — keeping your data private while unlocking powerful AI capabilities.",
+    stack: ["Vue3", "ML", "TypeScript."],
+  },
+    {
+    title: "Gallusgarten",
+    url: "https://gallusgarten.de/",
+    image: "projects/image6.webp",
+    description: "Empowering businesses to scale through strategic social media marketing and lead generation solutions.",
+    stack: ["Vue3", "CouchDB", "TaypeScript"],
+  },
   {
     title: "Stellargrowthhq",
     url: "https://stellargrowthhq.com/",
@@ -22,7 +43,7 @@ export const projects = [
   },
   {
     title: "ArtClinic",
-    url: "http://clinic-arthur.com/",
+    url: "https://arthur-clinic.com/",
     image: "projects/image1.webp",
     description: "Dedicated to providing high-quality healthcare services to our patients.",
     stack: ["React.js - Chart.js", "Node.js - Express", "MySQL", "JWT - Hashing - Regex", "AWS - S3- Ec2", "Cloudflare."],
